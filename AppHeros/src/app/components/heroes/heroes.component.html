@@ -1,0 +1,12 @@
+<h1>Heroes <small>de Marvel y DC</small></h1>
+<div class="row" *ngIf="Heroes.length < 1">
+    <div class="col-sm-12">
+        <div class="alert alert-info" role="alert">
+            No hay elementos relacionados a la busqueda.
+        </div>
+    </div>
+</div>
+<div class="card-columns  animated fadeIn fast">
+    <!--let heroe of Heroes; let i=index-->
+    <app-herocard (HeroSeleccionado)="verHeroe( $event )" [heroe]="heroe" [idx]="heroe.idx" *ngFor="let heroe of Heroes; let i=index"></app-herocard>
+</div>
