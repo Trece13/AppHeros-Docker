@@ -10,12 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HeroesComponent implements OnInit {
 
   Heroes: Heroe[] = [];
-  constructor(private heroesService: HeroesService,
+  constructor(public heroesService: HeroesService,
               private router: Router, private activatedRoute: ActivatedRoute) {
-    this.Heroes = this.heroesService.getHeroes();
-    activatedRoute.params.subscribe(params => {
-      this.Heroes   = this.heroesService.BuscarHeroes(params[ 'texto' ]);
-    });
+              this.heroesService.heroes = this.heroesService.getHeroes();
+              activatedRoute.params.subscribe(params => {
+              this.heroesService.heroes = this.heroesService.BuscarHeroes(params[ 'texto' ]);
+              });
   }
 
   ngOnInit(): void {
